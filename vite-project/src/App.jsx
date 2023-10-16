@@ -6,7 +6,6 @@ import './App.css'
 
 
 
-
 const pokemonList = [
   {
     name: "bulbasaur",
@@ -32,28 +31,19 @@ const pokemonList = [
 function App() {
   const [pokemonIndex, setPokemonIndex] = useState(0);
 
-  const previousPokemon = () => {
-    if (pokemonIndex > 0) {
-      setPokemonIndex(pokemonIndex - 1);
-    }
-  };
-
-  const nextPokemon = () => {
-    if (pokemonIndex < pokemonList.length - 1) {
-      setPokemonIndex(pokemonIndex + 1);
-    }
+  const handlePokemonClick = (index) => {
+    setPokemonIndex(index);
   };
 
   return (
     <div >
-      <h1>Je suis {pokemonList[pokemonIndex].name}</h1>
+      <h1>{pokemonList[pokemonIndex].name}</h1>
       <Pokemondcard name={pokemonList[pokemonIndex].name} image={pokemonList[pokemonIndex].imgSrc} />
 
-       
-       <NavBar
-        onPreviousClick={previousPokemon}
-        onNextClick={nextPokemon}
-       
+      <NavBar
+        pokemonList={pokemonList}
+        onPokemonClick={handlePokemonClick}
+        currentPokemonIndex={pokemonIndex}
       />
     </div>
   );
