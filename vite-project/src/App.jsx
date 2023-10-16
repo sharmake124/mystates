@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useEffect } from 'react';
 import Pokemondcard from './components/PokemondCard'
 import NavBar from './components/Navbar';
 import './App.css'
@@ -31,6 +32,10 @@ const pokemonList = [
 function App() {
   const [pokemonIndex, setPokemonIndex] = useState(0);
 
+  useEffect(() => {
+    alert("hello pokemon trainer :)");
+  }, []); // Utilisation de useEffect pour afficher une alerte au démarrage
+
   const handlePokemonClick = (index) => {
     setPokemonIndex(index);
   };
@@ -39,7 +44,6 @@ function App() {
     <div >
       <h1>{pokemonList[pokemonIndex].name}</h1>
       <Pokemondcard name={pokemonList[pokemonIndex].name} image={pokemonList[pokemonIndex].imgSrc} />
-
       <NavBar
         pokemonList={pokemonList}
         onPokemonClick={handlePokemonClick}
@@ -50,5 +54,6 @@ function App() {
 }
 
 export default App;
+
 
 

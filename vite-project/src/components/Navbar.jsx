@@ -1,8 +1,8 @@
 import React from 'react';
 
-function NavBar({ pokemonList, onPokemonClick}) {
+function NavBar({ pokemonList, onPokemonClick, currentPokemonIndex }) {
   return (
-    <div >
+    <div className="navbar">
       {pokemonList.map((pokemon, index) => (
         <button
           key={index}
@@ -12,6 +12,7 @@ function NavBar({ pokemonList, onPokemonClick}) {
           {pokemon.name}
         </button>
       ))}
+      {pokemonList[currentPokemonIndex].name === 'pikachu' && alert("pika pikachu !!!")}
     </div>
   );
 }
